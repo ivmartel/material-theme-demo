@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-prod": "ng build --base-href /material-theme-demo/dist/material-theme-demo/ --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
