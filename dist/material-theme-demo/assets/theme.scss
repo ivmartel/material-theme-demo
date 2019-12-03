@@ -1,0 +1,62 @@
+@import '~@angular/material/theming';
+// local palettes
+@import './palette-blue.scss';
+@import './palette-grey.scss';
+@import './palette-red.scss';
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+// prebuilt
+$pal-mat-deep-purple: mat-palette($mat-deep-purple);
+$pal-mat-amber: mat-palette($mat-amber);
+$pal-mat-indigo: mat-palette($mat-indigo);
+$pal-mat-pink: mat-palette($mat-pink);
+$pal-mat-blue-grey: mat-palette($mat-blue-grey);
+$pal-mat-purple: mat-palette($mat-purple);
+$pal-mat-green: mat-palette($mat-green);
+// local
+$pal-local-grey: mat-palette($local-grey);
+$pal-local-blue: mat-palette($local-blue);
+
+// The warn palette is optional (defaults to red).
+$pal-mat-red: mat-palette($mat-red);
+$pal-local-red: mat-palette($local-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme-deeppurple-amber: mat-light-theme($pal-mat-deep-purple, $pal-mat-amber, $pal-mat-red);
+$theme-indigo-pink: mat-light-theme($pal-mat-indigo, $pal-mat-pink, $pal-mat-red);
+$theme-pink-bluegrey: mat-dark-theme($pal-mat-pink, $pal-mat-blue-grey, $pal-mat-red);
+$theme-purple-green: mat-dark-theme($pal-mat-purple, $pal-mat-green, $pal-mat-red);
+// local
+$theme-grey-blue: mat-light-theme($pal-local-grey, $pal-local-blue, $pal-local-red);
+$theme-blue-grey: mat-light-theme($pal-local-blue, $pal-local-grey, $pal-local-red);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+.theme-deeppurple-amber {
+    @include angular-material-theme($theme-deeppurple-amber);
+}
+.theme-indigo-pink{
+    @include angular-material-theme($theme-indigo-pink);
+}
+.theme-pink-bluegrey {
+    @include angular-material-theme($theme-pink-bluegrey);
+}
+.theme-purple-green {
+    @include angular-material-theme($theme-purple-green);
+}
+// local
+.theme-grey-blue {
+    @include angular-material-theme($theme-grey-blue);
+}
+.theme-blue-grey {
+    @include angular-material-theme($theme-blue-grey);
+}
+

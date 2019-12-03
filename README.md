@@ -1,6 +1,8 @@
-# MaterialThemeDemo
+# material-theme-demo
 
-Demo project to get a better idea of what a material theme impacts...
+Demo project to get a better idea of what a material theme impacts.
+
+See it live: [gere](https://ivmartel.github.io/material-theme-demo/dist/material-theme-demo)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
