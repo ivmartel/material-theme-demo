@@ -1,0 +1,129 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Angular material theme demo</span>
+      <span class="spacer"></span>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>help</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Help</button>
+        <button mat-menu-item>About</button>
+      </mat-menu>
+
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="sidenavOpened" class="sidenav">
+    <mat-action-list>
+      <button mat-list-item>Item 1</button>
+      <mat-divider></mat-divider>
+      <button mat-list-item>Item 2</button>
+      <mat-divider></mat-divider>
+      <button mat-list-item>Item 3</button>
+    </mat-action-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <h2 class="marg-left-10">Main page</h2>
+
+    <section class="content-section">
+      <mat-form-field>
+        <mat-label>Choose theme</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let theme of themes" [value]="theme" (click)="onSetTheme(theme)">
+            {{theme}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+
+    <section class="content-section">
+      <p>This is a small demo of some angular components.
+        Check the <a href="https://material.angular.io/">doc</a>.</p>
+    </section>
+
+    <section class="content-section">
+      <mat-checkbox>Not checked</mat-checkbox>
+      <mat-checkbox class="marg-left-10" checked="true">Checked</mat-checkbox>
+    </section>
+
+    <section class="content-section">
+      <mat-radio-group>
+        <mat-radio-button value="after" checked="true">After</mat-radio-button>
+        <mat-radio-button value="before" class="marg-left-10">Before</mat-radio-button>
+      </mat-radio-group>
+    </section>
+
+    <section class="content-section">
+      <div class="button-row">
+        <button mat-raised-button>Basic</button>
+        <button mat-raised-button color="primary">Primary</button>
+        <button mat-raised-button color="accent">Accent</button>
+        <button mat-raised-button color="warn">Warn</button>
+        <button mat-raised-button disabled>Disabled</button>
+        <a mat-raised-button routerLink=".">Link</a>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <button mat-raised-button color="primary"
+         matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+        Action
+      </button>
+    </section>
+
+    <section class="content-section">
+      <button mat-raised-button color="primary" (click)="openBottomSheet()">
+        Open bottom sheet
+      </button>
+      <button mat-raised-button color="primary" (click)="openSnackBar()"
+        class="marg-left-10" matTooltip="Info about the action">
+          Open snack bar
+      </button>
+    </section>
+
+    <section class="content-section">
+      <mat-form-field>
+        <input matInput placeholder="Input" [formControl]="inputFormControl">
+        <mat-hint>This is an input hint!</mat-hint>
+        <mat-error *ngIf="inputFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </section>
+
+    <mat-card class="card">
+      <mat-card-content>
+        <mat-horizontal-stepper>
+          <mat-step label="Step 1">
+            Step Content 1
+          </mat-step>
+          <mat-step label="Step 1">
+            Step Content 2
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="First">Tab Content 1</mat-tab>
+          <mat-tab label="Second">Tab Content 2</mat-tab>
+          <mat-tab label="Third">Tab Content 3</mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-content>
+        <mat-spinner></mat-spinner>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
