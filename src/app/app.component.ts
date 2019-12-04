@@ -26,6 +26,7 @@ export class AppComponent {
   themes: string[] = [
     'theme-grey-blue',
     'theme-blue-grey',
+    'theme-blue-grey2',
     'theme-deeppurple-amber',
     'theme-indigo-pink',
     'theme-pink-bluegrey',

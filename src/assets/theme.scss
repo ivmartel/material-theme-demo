@@ -3,11 +3,28 @@
 @import './palette-blue.scss';
 @import './palette-grey.scss';
 @import './palette-red.scss';
+// back/fore grounds
+@import './mat-dark-theme-bfg.scss';
+@import './mat-light-theme-bfg.scss';
+@import './local-0-light-theme-bfg.scss';
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat-core();
+
+// Creates a container object for a theme to be given to individual component theme mixins.
+// see https://github.com/angular/components/blob/8.2.3/src/material/core/theming/_theming.scss#L68
+@function get-theme($primary, $accent, $warn, $isdark, $theme-foreground, $theme-background) {
+    @return (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+        is-dark: $isdark,
+        foreground: $theme-foreground,
+        background: $theme-background,
+    );
+}
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -30,12 +47,16 @@ $pal-local-red: mat-palette($local-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme-deeppurple-amber: mat-light-theme($pal-mat-deep-purple, $pal-mat-amber, $pal-mat-red);
-$theme-indigo-pink: mat-light-theme($pal-mat-indigo, $pal-mat-pink, $pal-mat-red);
+$theme-indigo-pink: get-theme($pal-mat-indigo, $pal-mat-pink, $pal-mat-red,
+    false, $mat-light-theme-foreground, $mat-light-theme-background);
 $theme-pink-bluegrey: mat-dark-theme($pal-mat-pink, $pal-mat-blue-grey, $pal-mat-red);
-$theme-purple-green: mat-dark-theme($pal-mat-purple, $pal-mat-green, $pal-mat-red);
+$theme-purple-green: get-theme($pal-mat-purple, $pal-mat-green, $pal-mat-red,
+    true, $mat-dark-theme-foreground, $mat-dark-theme-background);
 // local
 $theme-grey-blue: mat-light-theme($pal-local-grey, $pal-local-blue, $pal-local-red);
 $theme-blue-grey: mat-light-theme($pal-local-blue, $pal-local-grey, $pal-local-red);
+$theme-blue-grey2: get-theme($pal-local-blue, $pal-local-grey, $pal-local-red,
+    false, $local-0-light-theme-foreground, $local-0-light-theme-background);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -58,5 +79,8 @@ $theme-blue-grey: mat-light-theme($pal-local-blue, $pal-local-grey, $pal-local-r
 }
 .theme-blue-grey {
     @include angular-material-theme($theme-blue-grey);
+}
+.theme-blue-grey2 {
+    @include angular-material-theme($theme-blue-grey2);
 }
 
